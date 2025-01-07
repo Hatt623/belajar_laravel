@@ -41,6 +41,7 @@ Route::get('/Contact', function () {
 
 });
 
+
 // Jum'at 7 Nov 2024
 
 Route::get('/tes/{Nama2}/{Umur2}/{Gender2}/{Lahir2}/{Alamat2}/{Agama2}' , function ($Nama, $Umur, $Gender, $Lahir, $Alamat, $Agama){
@@ -61,7 +62,24 @@ Route::get('/Hitung/{Bilangan1}/{Bilangan2}' , function ($Bilangan1, $Bilangan2)
     .      "Hasil : " . $Hasil . "<br>";
 });
 
+Route::get('/Hitung-Bagi/{Bilangan1}/{Bilangan2}' , function ($Bilangan1, $Bilangan2){
+    $Hasil = $Bilangan1 / $Bilangan2;
+
+    return "Bilangan 1 : " . $Bilangan1 .  "<br>"
+    .       "Bilangan 2 : " . $Bilangan2 . "<br>"
+    .       "Hasil :" . $Hasil . "<br>";
+    
+});
+
+// Senin, 6 Januari 2025
+Route::get('/Siswa', function (){
+    $Data_Siswa = ['Keyndra', 'Napis', 'Opet', 'Abel', 'Daffa'];
+
+    return view('Tampil', compact('Data_Siswa'));
+});
+
 // Jum'at 7 Nov 2024 TUGAS
+// NEKSTIM JANGAN PAKE ECHO DALAM IF TAPI DLUARRRRRRRRRRRRRRRRRR PANJANG COK JADINYA!!!!!!!!!!!!!!
 Route::get('/Tugas1/{Nama2}/{Telpon2}/{JBarang2}/{NBarang2}/{Jumlah2}/{Pembayaran2}', function ($Nama, $Telpon, $JBarang, $NBarang, $Jumlah, $Pembayaran) {
     $Barang = [
         "Poco" => 3000000,
@@ -626,4 +644,3 @@ Route::get('/Tugas1/{Nama2}/{Telpon2}/{JBarang2}/{NBarang2}/{Jumlah2}/{Pembayara
 });
 
 // NEKSTIM JANGAN PAKE ECHO DALAM IF TAPI DLUARRRRRRRRRRRRRRRRRR PANJANG COK JADINYA!!!!!!!!!!!!!!
-
