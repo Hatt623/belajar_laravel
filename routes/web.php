@@ -4,6 +4,10 @@ use App\Models\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiswasController;
 use App\Http\Controllers\PpdbsController;
+use App\Http\Controllers\PenggunasController;
+use App\Http\Controllers\TeleponController;
+use App\Http\Controllers\KategorisController;
+use App\Http\Controllers\ProduksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,6 +98,12 @@ Route::get('/barang', [PostController::class, 'Menampilkan2']);
 // CRUD
 Route::resource('siswa', SiswasController::class);
 Route::resource('ppdb', PpdbsController::class);
+
+Route::resource('pengguna', PenggunasController::class);
+Route::resource('telepon', TeleponController::class);
+
+Route::resource('kategori', KategorisController::class);
+Route::resource('produk', ProduksController::class);
 
 
 // Routing barang dengan model

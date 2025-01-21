@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Siswa;
+use App\Models\Telepon;
+use App\Models\Penggunas;
 use Illuminate\Http\Request;
 
-class SiswasController extends Controller
+class TeleponController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    // Untuk user udah login atau belom
+    
     public function __construct()
     {
         $this->middleware('auth');
     }
-     
+
     public function index()
     {
-        $siswa = Siswa::all();
-        return view('siswa.index', compact('siswa'));
+        $telepon = Telepon::all();
+        return view('telepon.index', compact('telepon'));
     }
 
     /**
@@ -32,7 +32,8 @@ class SiswasController extends Controller
      */
     public function create()
     {
-       return view('siswa.create');
+        $pengguna = Penggunas::all();
+        return view('telepon.create', compact('pengguna'));
     }
 
     /**
@@ -43,16 +44,14 @@ class SiswasController extends Controller
      */
     public function store(Request $request)
     {
+        $telepon = new Telepon;
+        //Nama yang di tabel          nama yang di form
+        $telepon->nomor             = $request->nomor;
+        $telepon->id_pengguna       = $request->id_pengguna;
 
-        $siswa = new Siswa;
-        //      Nama yang di tabel          nama yang di form
-        $siswa->nis             = $request->nis;
-        $siswa->nama            = $request->nama;
-        $siswa->jenis_kelamin   = $request->jenis_kelamin;
-        $siswa->kelas           = $request->kelas;
-        $siswa->save();
+        $telepon->save();
 
-        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil ditambahkan');
+        return redirect()->route('telepon.index')->with('success', 'Data telepon berhasil ditambahkan');
     }
 
     /**
@@ -63,8 +62,9 @@ class SiswasController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::FindOrFail($id);
-        return view('siswa.show', compact('siswa'));
+        $telepon = Telepon::findOrFail($id);
+        $pengguna = Penggunas::all();
+        return view('telepon.show', compact('telepon', 'pengguna'));
     }
 
     /**
@@ -75,8 +75,9 @@ class SiswasController extends Controller
      */
     public function edit($id)
     {
-        $siswa = Siswa::FindOrFail($id);
-        return view('siswa.edit', compact('siswa'));
+        $telepon = Telepon::findOrFail($id);
+        $pengguna = Penggunas::all();
+        return view('telepon.edit', compact('telepon', 'pengguna'));
     }
 
     /**
@@ -88,15 +89,15 @@ class SiswasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $siswa = Siswa::FindOrFail($id);
-        //      Nama yang di tabel          nama yang di form
-        $siswa->nis             = $request->nis;
-        $siswa->nama            = $request->nama;
-        $siswa->jenis_kelamin   = $request->jenis_kelamin;
-        $siswa->kelas           = $request->kelas;
-        $siswa->save();
+        $telepon = Telepon::findOrFail($id);
+        //Nama yang di tabel        nama yang di form
+        $telepon->nomor             = $request->nomor;
+        $telepon->id_pengguna       = $request->id_pengguna;
 
-        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diubah');
+        $telepon->save();
+
+        session()->flash('success', 'Data telepon berhasil diupdate');
+        return redirect()->route('telepon.index');
     }
 
     /**
@@ -107,8 +108,7 @@ class SiswasController extends Controller
      */
     public function destroy($id)
     {
-        $siswa = Siswa::FindOrFail($id);
-        $siswa->delete();
-        return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus');
+        Telepon::FindOrFail($id)->delete();
+        return redirect()->route('telepon.index')->with('success', 'Data Telepon berhasil dihapus');
     }
 }
