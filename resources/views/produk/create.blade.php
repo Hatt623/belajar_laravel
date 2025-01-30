@@ -28,6 +28,10 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label> Cover </label>
+                            <input type="file" class="form-control mb-3" name="cover" required>
+                        </div>
                         <button type="submit" class="btn btn-primary" name="save" >save</button>
                     </form>  
                 </div>

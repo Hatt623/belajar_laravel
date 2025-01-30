@@ -12,7 +12,7 @@
                         <!-- ini diperlukan atau akan Expire pagenya @csrf -->
                         @csrf 
                         <div class="form-group">
-                            <label>Nama Lengkap</label>
+                            <label>Nama Kategori</label>
                             <input type="text" class="form-control mb-3" placeholder="Masukkan nama kategori benda" name="nama_kategori" required>
  
                         </div>

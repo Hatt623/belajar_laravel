@@ -13,7 +13,7 @@
                         @csrf 
                         @method('PUT')
                         <div class="form-group">
-                            <label>Nama lengkap</label>
+                            <label>Nama Kategori</label>
                             <input type="text" class="form-control mb-3" placeholder="Silahkan update nama kategori benda" name="nama_kategori" value="{{ $kategori->nama_kategori }}" disabled>
 
                         </div>

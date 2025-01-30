@@ -20,8 +20,8 @@
                             <input type="text" class="form-control mb-3" placeholder="Nama Siswa" name="nama" value="{{ $siswa->nama }}">
 
                             <label>Jenis Kelamin</label> <br>
-                            <input type="radio" class="form-check-input mb-3" name="jenis_kelamin" value="Laki-Laki"> Laki-Laki 
-                            <input type="radio" class="form-check-input mb-3" name="jenis_kelamin" value="Perempuan"> perempuan 
+                            <input type="radio" class="form-check-input mb-3" name="jenis_kelamin" value="Laki-Laki" required> Laki-Laki 
+                            <input type="radio" class="form-check-input mb-3" name="jenis_kelamin" value="Perempuan" required> perempuan 
                             <br>
 
                             <label class="">Kelas</label>
@@ -31,6 +31,13 @@
                                 <option value="XI RPL 2">XI RPL 2</option>
                                 <option value="XI RPL 3">XI RPL 3</option>
                             </select>
+
+                            <div class="form-group">
+                                <label> Cover </label>
+                                <img src="{{ asset('images/siswa/' . $siswa->cover) }}" width="100px">
+                                <input type="file" class="form-control mb-3" name="cover"  required>
+                            </div>
+
                         </div>
                         <button type="submit" class="btn btn-primary" name="save" >Update</button>
                     </form>  

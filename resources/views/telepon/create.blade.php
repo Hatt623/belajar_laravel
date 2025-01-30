@@ -13,7 +13,7 @@
                         @csrf 
                         <div class="form-group">
                             <label>Nomor Telepon</label>
-                            <input type="text" class="form-control mb-3" placeholder="Masukkan Nomor Telepon Anda..." name="nomor" required>
+                            <input type="number" class="form-control mb-3" placeholder="Masukkan Nomor Telepon Anda..." name="nomor" required>
  
                             <label class="">Nama Pengguna</label>
                             <select class="form-control mb-3" name="id_pengguna">

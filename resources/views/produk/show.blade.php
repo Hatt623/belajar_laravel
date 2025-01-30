@@ -29,6 +29,10 @@
                                 @endforeach
                             </select>
                         </div>
+                            <div class="form-group">
+                                <label> Cover </label>
+                                <img class="mb-3" src="{{ asset('images/produk/' . $produk->cover) }}" width="100px">
+                            </div>
                         <a href="{{ route('produk.index') }}" class="btn btn-primary">Back</a>
                     </form>  
                 </div>

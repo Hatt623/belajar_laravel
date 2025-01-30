@@ -4,10 +4,23 @@ use App\Models\Post;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiswasController;
 use App\Http\Controllers\PpdbsController;
+
 use App\Http\Controllers\PenggunasController;
 use App\Http\Controllers\TeleponController;
+
 use App\Http\Controllers\KategorisController;
 use App\Http\Controllers\ProduksController;
+
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\CustomersController;
+
+use App\Http\Controllers\PenerbitsController;
+use App\Http\Controllers\GenresController;
+use App\Http\Controllers\BukusController;
+use App\Http\Controllers\PembeliansController;
+use App\Http\Controllers\TransaksisController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -104,6 +117,16 @@ Route::resource('telepon', TeleponController::class);
 
 Route::resource('kategori', KategorisController::class);
 Route::resource('produk', ProduksController::class);
+
+Route::resource('product', ProductsController::class);
+Route::resource('order', OrdersController::class);
+Route::resource('customer', CustomersController::class);
+
+Route::resource('penerbit', PenerbitsController::class);
+Route::resource('genre', GenresController::class);
+Route::resource('buku', BukusController::class);
+Route::resource('pembelian', PembeliansController::class);
+Route::resource('transaksi', TransaksisController::class);
 
 
 // Routing barang dengan model

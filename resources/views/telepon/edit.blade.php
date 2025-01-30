@@ -13,10 +13,10 @@
                         @csrf 
                         @method('PUT')
                         <div class="form-group">
-                            <label>NIS</label>
+                            <label>Nomor Telepon</label>
                             <input type="number" class="form-control mb-3" placeholder="Sialhkan update nomor telepon anda" name="nomor" value="{{ $telepon->nomor }}">
 
-                            <label class="">Kelas</label>
+                            <label class="">Nama Pengguna</label>
                             <select class="form-control mb-3" name="id_pengguna">
                                 @foreach($pengguna as $data)
                                     <option value="{{ $data->id }}" {{ $data->id == $telepon->id_pengguna ? 'selected' : ''}}> {{ $data->nama }}</option>

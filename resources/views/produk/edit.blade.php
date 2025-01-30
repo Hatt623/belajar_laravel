@@ -28,6 +28,12 @@
                                     <option value="{{ $data->id }}" {{ $data->id == $produk->id_kategori ? 'selected' : '' }}>{{ $data->nama_kategori }}</option>
                                 @endforeach
                             </select>
+
+                            <div class="form-group">
+                                <label> Cover </label>
+                                <img class="mb-3" src="{{ asset('images/produk/' . $produk->cover) }}" width="100px">
+                                <input type="file" class="form-control mb-3" name="cover" required>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary" name="save" >update</button>
                     </form>  

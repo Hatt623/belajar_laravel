@@ -16,4 +16,12 @@ class Produk extends Model
     {
         return $this->belongsTo(Kategori::class ,'id_kategori');
     }
+
+    public function deleteImage(){
+        if ($this->cover && file_exists(public_path('images/produk' . $this->cover))) {
+            return unlink(public_path('images/produk' . $this->cover));
+            
+            }
+        
+        }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('stok');
             $table->unsignedBigInteger('id_kategori');
+            $table->string('cover');
             $table->foreign('id_kategori')->references('id')->on('kategoris')->onDelete('cascade');
 
             $table->timestamps();
