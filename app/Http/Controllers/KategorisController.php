@@ -42,6 +42,15 @@ class KategorisController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nama_kategori' => 'required|min:1|max:20',
+        ],
+        [
+            'nama_kategori.required' => 'Nama kategori wajib diisi',
+            'nama_kategori.min' => 'Nama kategori minimal 1 karakter',
+            'nama_kategori.max' => 'Nama kategori maksimal 20 karakter',
+        ]);
+
         $kategori = new Kategori;
         //     Nama yang di tabel          nama yang di form
         $kategori->nama_kategori            = $request->nama_kategori;
@@ -84,6 +93,15 @@ class KategorisController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_kategori' => 'required|min:1|max:20',
+        ],
+        [
+            'nama_kategori.required' => 'Nama kategori wajib diisi',
+            'nama_kategori.min' => 'Nama kategori minimal 1 karakter',
+            'nama_kategori.max' => 'Nama kategori maksimal 20 karakter',
+        ]);
+
         Kategori::find($id)->update($request->all());
         return redirect()->route('kategori.index')->with('success', 'Data kategori berhasil diubah');
     }

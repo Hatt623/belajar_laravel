@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kategori;
+use App\Models\kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -32,7 +32,7 @@ class ProduksController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::all();
+        $kategori = kategori::all();
         return view('produk.create', compact('kategori'));
     }
 
@@ -44,6 +44,29 @@ class ProduksController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nama_produk' => 'required|min:1|max:20',
+            'id_kategori' => 'required|min:1|max:20',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ],
+        [
+            'nama_produk.required' => 'Nama produk wajib diisi',
+            'nama_produk.min' => 'Nama produk minimal 1 karakter',
+            'nama_produk.max' => 'Nama produk maksimal 20 karakter',
+            'id_kategori.required' => 'id_kategori wajib diisi',
+            'harga.required' => 'Harga wajib diisi',
+            'harga.numeric' => 'Harga harus berupa angka',
+            'stok.required' => 'Stok wajib diisi',
+            'stok.numeric' => 'Stok harus berupa angka',
+            'cover.required' => 'Cover wajib diisi',
+            'cover.image' => 'File yang diupload harus berupa gambar',
+            'cover.mimes' => 'File yang diupload harus berupa jpeg, png, jpg, gif, svg'
+        ]
+        );
+
         $produk = new Produk;
         //Nama yang di tabel         nama yang di form
         $produk->nama_produk        = $request->nama_produk;
@@ -98,6 +121,25 @@ class ProduksController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nama_produk' => 'required|min:1|max:20',
+            'id_kategori' => 'required|min:1|max:20',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
+
+        ],
+        [
+            'nama_produk.required' => 'Nama produk wajib diisi',
+            'nama_produk.min' => 'Nama produk minimal 1 karakter',
+            'nama_produk.max' => 'Nama produk maksimal 20 karakter',
+            'id_kategori.required' => 'id_kategori wajib diisi',
+            'harga.required' => 'Harga wajib diisi',
+            'harga.numeric' => 'Harga harus berupa angka',
+            'stok.required' => 'Stok wajib diisi',
+            'stok.numeric' => 'Stok harus berupa angka'
+        ]
+        );
+        
         $produk = Produk::FindOrFail($id);
         //Nama yang di tabel         nama yang di form
         $produk->nama_produk        = $request->nama_produk;
