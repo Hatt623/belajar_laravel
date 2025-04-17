@@ -16,6 +16,7 @@
                             <a href="{{route ('home')}}" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
 
+                        @if(Auth::user()->is_admin === 1)
                         <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Pendaftaran</a>
                         </li>
@@ -31,6 +32,14 @@
                         <li>
                             <a href=" {{route ('kategori.index')}} "><i class="fa fa-edit fa-fw"></i> kategori</a>
                         </li>
+                        @endif
+
+                        @if(Auth::user()->is_admin === 0)
+                        <!-- <li>
+                            <a href=" {{route ('siswa.index')}} "><i class="fa fa-edit fa-fw"></i> Siswa</a>
+                        </li> -->
+                        @endif
+
                     </ul>
                 </div>
             </aside>

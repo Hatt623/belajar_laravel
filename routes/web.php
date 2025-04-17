@@ -21,6 +21,10 @@ use App\Http\Controllers\BukusController;
 use App\Http\Controllers\PembeliansController;
 use App\Http\Controllers\TransaksisController;
 
+use App\Http\Controllers\FrontController;
+
+use App\Http\Middleware\isAdmin;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +39,10 @@ use Illuminate\Support\Facades\Route;
  */
 
 // Kamis 6 Nov 2024
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
 
-});
+// });
 
 Route::get('/Home', function () {
     return '<h1>Assalamualaikum</h1>'
@@ -109,14 +113,10 @@ Route::get('/post', [PostController::class, 'Menampilkan']);
 Route::get('/barang', [PostController::class, 'Menampilkan2']);
 
 // CRUD
-Route::resource('siswa', SiswasController::class);
 Route::resource('ppdb', PpdbsController::class);
 
 Route::resource('pengguna', PenggunasController::class);
 Route::resource('telepon', TeleponController::class);
-
-Route::resource('kategori', KategorisController::class);
-Route::resource('produk', ProduksController::class);
 
 Route::resource('product', ProductsController::class);
 Route::resource('order', OrdersController::class);
@@ -128,6 +128,16 @@ Route::resource('buku', BukusController::class);
 Route::resource('pembelian', PembeliansController::class);
 Route::resource('transaksi', TransaksisController::class);
 
+Route::resource('/', FrontController::class);
+Route::resource('shopy', FrontController::class);
+
+Route::prefix('admin')->middleware('auth',isAdmin::class)->group(function() {
+    Route::resource('siswa', SiswasController::class);
+
+    Route::resource('kategori', KategorisController::class);
+    Route::resource('produk', ProduksController::class);
+
+});
 
 // Routing barang dengan model
 // Route::get('Barang', function () {

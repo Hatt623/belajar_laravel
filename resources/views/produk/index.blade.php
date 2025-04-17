@@ -96,12 +96,12 @@
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
                                                     <td>{{ $data->nama_produk }}</td>
-                                                    <td>{{ $data->harga }}</td>
+                                                    <td>{{number_format ($data->harga)}}</td>
                                                     <td>{{ $data->stok }}</td>
                                                     <td>{{ $data->kategori->nama_kategori }}</td>
                                                     <td>
-                                                        <img src="{{ asset('images/produk/' . $data->cover) }}" width="100px"></td>
-                                                    <td>
+                                                        <img src="{{ asset('images/produk/' . $data->cover) }}" width="100px">
+                                                    </td>
                                                     <td>
                                                         <a href=" {{ route('produk.edit' , $data->id) }} " class="btn btn-success">Edit</a>
                                                         <a href=" {{ route('produk.show' , $data->id) }}" class="btn btn-warning">Show</a>
