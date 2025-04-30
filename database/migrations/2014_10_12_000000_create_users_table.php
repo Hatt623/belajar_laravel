@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
             // Tambahan Field is_admin
             $table->boolean('is_admin')->default(0);    
+            // $table->enum('role', ['admin', 'viewer'])->default('viewer'); kalau mau pakai enum
 
             $table->rememberToken();
             $table->timestamps();

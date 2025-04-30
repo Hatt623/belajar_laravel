@@ -20,7 +20,7 @@ class isAdmin
         if ($request->routeIs('siswa.*' , 'produk.*' , 'kategori.*') && Auth::user()->is_admin !==1) {
             abort(403, 'Anda tidak memiliki akses ke halaman ini');
 
-        }
+        }   
         return $next($request);
     }
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_penerbit');
             $table->date('tanggal_terbit');
             $table->unsignedBigInteger('id_genre');
+            
 
             $table->timestamps();
         });
